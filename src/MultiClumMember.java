@@ -16,6 +16,6 @@ public class MultiClumMember extends Member {
 
     @Override
     public String toString() {
-        return super.toString() + " " + membershipPoint;
+        return super.toString() + ", " + membershipPoint;
     }
 }

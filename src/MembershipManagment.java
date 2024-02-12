@@ -47,16 +47,16 @@ public class MembershipManagment {
         int memberID;
         Member mbr;
         Calculator<Integer> cal;
-
+        reader.nextLine();
         System.out.println("Введите имя посетителя");
-        Scanner sc = new Scanner(System.in);
-        name = sc.nextLine();
+        //Scanner sc = new Scanner(System.in);
+        name = reader.nextLine();
 
 
         printClubOptions();
         System.out.println("Введите клуб посетителя");
         club = getIntInput();
-
+        reader.nextLine();
         while (club < 1 || club > 4) {
             System.out.println("Invalid ClubID. Please try again");
             club = getIntInput();

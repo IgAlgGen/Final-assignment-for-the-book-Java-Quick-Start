@@ -29,6 +29,7 @@ public class FileHandler {
                 }
 
                 m.add(mem);
+                lineRead = reader.readLine();
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -48,5 +49,24 @@ public class FileHandler {
         }
     }
 
-    //overWriteFile();
+    public void overWriteFile(LinkedList<Member> m){
+        String s;
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("members.temp", false))){
+            for (Member member : m) {
+                s = member.toString();
+                bufferedWriter.write(s + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Ошибка при записи в файл: " + e.getMessage());
+            e.printStackTrace();
+        }
+        try {
+            File f = new File("members.csv");
+            File tf = new File("members.temp");
+            f.delete();
+            tf.renameTo(f);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
